@@ -1,4 +1,4 @@
-![GitHub repo size](https://img.shields.io/github/repo-size/Dull-legend7/chakraa-smart-bus-tracking-system)
+![GitHub repo size](https://img.shields.io/github/repo-size/athuls-engineer/chakraa-smart-bus-tracking-system)
 
 # 🚌 Chakraa - Smart Bus Tracking System
 
@@ -74,7 +74,7 @@ chakraa-smart-bus-tracking-system/
 ### 1️⃣ Clone the repository
 
 ```
-git clone https://github.com/Dull-legend7/chakraa-smart-bus-tracking-system.git
+git clone https://github.com/athuls-engineer/chakraa-smart-bus-tracking-system.git
 ```
 
 ### 2️⃣ Install dependencies
@@ -126,7 +126,7 @@ PAYMENT_API_KEY=your_payment_key_here
 
 ## 👨‍💻 Contributors
 
-* Athul S
+* [Athul S](https://github.com/athuls-engineer)
 * M. Varshith Reddy
 * Rithin Ranjith
 * Noaf N
