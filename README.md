@@ -50,12 +50,25 @@ It enhances public transport usability by combining **live tracking, route visib
 
 ```
 chakraa-smart-bus-tracking-system/
-│── user/          # User mobile application
-│── driver/        # Driver mobile application
-│── server/        # Backend server (APIs, payments)
-│── hardware/      # ESP32 + GPS code
+│── firmware/      # ESP32 C++ firmware, hardware pinout & circuit schematics
+│── user/          # User passenger mobile application (React Native)
+│── driver/        # Driver transit mobile application (React Native)
+│── server/        # Backend server (Node.js/Express, Prisma ORM, Razorpay)
+│── socket/        # Socket.io real-time broadcast engine
 │── README.md
 ```
+
+---
+
+## 🛰️ Embedded Hardware Node (ESP32 + u-blox Neo-6M)
+
+The onboard telematics unit deployed on each fleet vehicle runs autonomous bare-metal C++ firmware on an **ESP32-WROOM-32**:
+
+* **Complete Firmware & Guide**: See [**`firmware/`**](firmware/) for full source code (`esp32_gps_tracker.ino`), pinout connection tables, and flashing instructions.
+* **Hardware UART Stream**: Decodes live NMEA sentences via `TinyGPSPlus` on dedicated HardwareSerial2 (GPIO 16 RX / GPIO 17 TX) at 9600 baud.
+* **Sub-5s Cloud Sync**: Directly formats and transmits JSON coordinate telemetry (`latitude`, `longitude`, `speed_kmh`, `altitude`, `satellites`, `hdop`) to Firebase Realtime Database (`/buses/{busId}/location`) every 3 seconds.
+* **Fault-Tolerant Link**: Includes non-blocking auto-reconnect logic with exponential backoff for fluctuating cellular / Wi-Fi signals.
+* **Hardware Diagnostics**: Onboard LED provides visual states for network acquisition, GPS satellite fix, and telemetry packet ACKs.
 
 ---
 
