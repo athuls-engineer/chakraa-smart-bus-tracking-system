@@ -7,9 +7,9 @@ import { sendToken } from "../utils/send-token";
 import { nylas } from "../app";
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken, {
-  lazyLoading: true,
-});
+const client = (accountSid && authToken)
+  ? twilio(accountSid, authToken, { lazyLoading: true })
+  : (null as any);
 
 // sending otp to driver phone number
 export const sendingOtpToPhone = async (
@@ -21,7 +21,7 @@ export const sendingOtpToPhone = async (
     const { phone_number } = req.body;
     console.log(phone_number);
     try {
-      await client.verify.v2
+      await client?.verify?.v2
         ?.services(process.env.TWILIO_SERVICE_SID!)
         .verifications.create({
           channel: "sms",
@@ -55,8 +55,8 @@ export const verifyPhoneOtpForLogin = async (
     const { phone_number, otp } = req.body;
 
     try {
-      await client.verify.v2
-        .services(process.env.TWILIO_SERVICE_SID!)
+      await client?.verify?.v2
+        ?.services(process.env.TWILIO_SERVICE_SID!)
         .verificationChecks.create({
           to: phone_number,
           code: otp,
@@ -93,8 +93,8 @@ export const verifyPhoneOtpForRegistration = async (
     const { phone_number, otp } = req.body;
 
     try {
-      await client.verify.v2
-        .services(process.env.TWILIO_SERVICE_SID!)
+      await client?.verify?.v2
+        ?.services(process.env.TWILIO_SERVICE_SID!)
         .verificationChecks.create({
           to: phone_number,
           code: otp,

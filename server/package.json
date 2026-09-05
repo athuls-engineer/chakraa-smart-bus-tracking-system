@@ -5,6 +5,7 @@
   "main": "build/server.js",
   "type": "commonjs",
   "scripts": {
+    "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only server.ts",
     "start": "node build/server.js"
   },

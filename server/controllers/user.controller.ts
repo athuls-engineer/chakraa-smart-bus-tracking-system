@@ -11,9 +11,9 @@ import { formatAndValidatePhone } from "../utils/phone.utils";
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 
-const client = twilio(accountSid, authToken, {
-  lazyLoading: true,
-});
+const client = (accountSid && authToken)
+  ? twilio(accountSid, authToken, { lazyLoading: true })
+  : (null as any);
 
 /* ===================================================== */
 /* 🔥 REGISTER USER (PHONE OTP) */
