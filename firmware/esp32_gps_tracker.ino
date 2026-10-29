@@ -4,7 +4,8 @@
  * =============================================================================
  * Hardware Architecture: ESP32-WROOM-32 + u-blox Neo-6M GPS Module
  * Communication: HardwareSerial (UART2) + Wi-Fi / LTE Gateway + Firebase RTDB
- * Author: Athul S (https://github.com/athuls-engineer)
+ * Authors: Athul S, Nived S, Noaf N, Rithin Ranjith, M. Varshith Reddy
+ * Department: Electronics and Communication Engineering, Amrita Vishwa Vidyapeetham, Amritapuri
  * Repository: https://github.com/athuls-engineer/chakraa-smart-bus-tracking-system
  * =============================================================================
  */

@@ -8,7 +8,6 @@ export const isAuthenticated = (
   next: NextFunction
 ) => {
   try {
-    // Extract the token from the Authorization header
     const authHeader = req.headers.authorization;
     if (!authHeader) {
       return res
@@ -20,27 +19,36 @@ export const isAuthenticated = (
       return res.status(401).json({ message: "Token missing" });
     }
 
-    // Verify the token
     jwt.verify(
       token,
       process.env.ACCESS_TOKEN_SECRET!,
       async (err: any, decoded: any) => {
         if (err) {
-          return res.status(401).json({ message: "Invalid token" });
+          return res.status(401).json({ message: "Invalid or expired token" });
         }
 
-        const userData = await prisma.user.findUnique({
-          where: {
-            id: decoded.id,
-          },
-        });
-        // Attach the user data to the request object
-        req.user = userData;
-        next();
+        try {
+          const userData = await prisma.user.findUnique({
+            where: {
+              id: decoded.id,
+            },
+          });
+
+          if (!userData) {
+            return res.status(401).json({ message: "User account not found" });
+          }
+
+          req.user = userData;
+          next();
+        } catch (dbError) {
+          console.error("Database lookup error in auth middleware:", dbError);
+          return res.status(500).json({ message: "Internal server error during authentication" });
+        }
       }
     );
   } catch (error) {
-    console.log(error);
+    console.error("Authentication middleware failure:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -50,7 +58,6 @@ export const isAuthenticatedDriver = (
   next: NextFunction
 ) => {
   try {
-    // Extract the token from the Authorization header
     const authHeader = req.headers.authorization;
     if (!authHeader) {
       return res
@@ -62,26 +69,35 @@ export const isAuthenticatedDriver = (
       return res.status(401).json({ message: "Token missing" });
     }
 
-    // Verify the token
     jwt.verify(
       token,
       process.env.ACCESS_TOKEN_SECRET!,
       async (err: any, decoded: any) => {
         if (err) {
-          return res.status(401).json({ message: "Invalid token" });
+          return res.status(401).json({ message: "Invalid or expired token" });
         }
 
-        const driverData = await prisma.driver.findUnique({
-          where: {
-            id: decoded.id,
-          },
-        });
-        // Attach the user data to the request object
-        req.driver = driverData;
-        next();
+        try {
+          const driverData = await prisma.driver.findUnique({
+            where: {
+              id: decoded.id,
+            },
+          });
+
+          if (!driverData) {
+            return res.status(401).json({ message: "Driver account not found" });
+          }
+
+          req.driver = driverData;
+          next();
+        } catch (dbError) {
+          console.error("Database lookup error in driver auth middleware:", dbError);
+          return res.status(500).json({ message: "Internal server error during authentication" });
+        }
       }
     );
   } catch (error) {
-    console.log(error);
+    console.error("Driver authentication middleware failure:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
