@@ -1,0 +1,12 @@
+
+# Dependencies and build artifacts
+node_modules/
+*/node_modules/
+.expo/
+*/.expo/
+.env
+*.env.local
+dist/
+.DS_Store
+Thumbs.db
+*.log
