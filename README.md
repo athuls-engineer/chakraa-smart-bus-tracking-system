@@ -161,3 +161,10 @@ This project is developed for **academic purposes**.
 * Open-source libraries
 
 ---
+
+---
+
+## 🤝 Authors & Contributors
+
+* **Athul S** ([@athuls-engineer](https://github.com/athuls-engineer)) — Creator & IoT Firmware/Full-Stack Developer
+* **Google Gemini** (AI Pair Programmer) — Co-developer assisting with firmware NMEA parsing logic, Express backend route structuring, and database sync.
