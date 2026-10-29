@@ -137,34 +137,21 @@ PAYMENT_API_KEY=your_payment_key_here
 
 ---
 
-## 👨‍💻 Contributors
+---
 
-* [Athul S](https://github.com/athuls-engineer)
-* M. Varshith Reddy
-* Rithin Ranjith
-* Noaf N
-* Nived S
+## 👨‍💻 Project Team & Contributors
+
+This project is developed as the **Final Year B.Tech Capstone Project** by students of the **Department of Electronics and Communication Engineering**, **Amrita Vishwa Vidyapeetham, Amritapuri, India**:
+
+* **Athul S** ([@athuls-engineer](https://github.com/athuls-engineer))
+* **Nived S**
+* **Noaf N**
+* **Rithin Ranjith**
+* **M. Varshith Reddy**
 
 ---
 
-## 📜 License
+## 📜 Academic Attribution & License
 
-This project is developed for **academic purposes**.
-
----
-
-## 💡 Acknowledgements
-
-* Firebase
-* ESP32 Community
-* Razorpay
-* Open-source libraries
-
----
-
----
-
-## 🤝 Authors & Contributors
-
-* **Athul S** ([@athuls-engineer](https://github.com/athuls-engineer)) — Creator & IoT Firmware/Full-Stack Developer
-* **Google Gemini** (AI Pair Programmer) — Co-developer assisting with firmware NMEA parsing logic, Express backend route structuring, and database sync.
+Developed for academic research and engineering evaluation at **Amrita Vishwa Vidyapeetham**.  
+Licensed under the [Apache 2.0 License](LICENSE).
